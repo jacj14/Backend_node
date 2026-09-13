@@ -1,8 +1,14 @@
 const express = require("express");
+const cors = require("cors"); // 1. Importar el paquete cors
 const { Pool } = require("pg");
 require("dotenv").config();
 
 const app = express();
+
+// 2. Configurar CORS
+// Opción A: Permitir todos los orígenes (Ideal para pruebas iniciales / desarrollo)
+app.use(cors());
+
 
 // Middlewares nativos de Express
 app.use(express.json());
