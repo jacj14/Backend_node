@@ -7,7 +7,16 @@ const app = express();
 
 // 2. Configurar CORS
 // Opción A: Permitir todos los orígenes (Ideal para pruebas iniciales / desarrollo)
-app.use(cors());
+//app.use(cors());
+
+
+// Opción B: Restringir a React especificando el origen exacto (Recomendado para producción/seguridad)
+const corsOptions = {
+  origin: "http://localhost:3000", // URL de tu app en React
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+};
+app.use(cors(corsOptions));
 
 
 // Middlewares nativos de Express
